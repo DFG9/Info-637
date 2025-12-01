@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ColorFlow — Intelligent Color Palette Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <div class="logo">ColorFlow</div>
+            </div>
+            <div class="tagline">
+                Create <span class="tagline-emphasis">beautiful, accessible</span> color palettes<br>
+                with intelligent harmony and contrast checking
+            </div>
+        </div>
+
+        <div class="canvas">
+            <!-- Color Input Section -->
+            <div class="section">
+                <div class="section-title">Choose Your Base Color</div>
+                <div class="color-input-area">
+                    <div class="color-preview-large" id="colorPreview" onclick="document.getElementById('colorPicker').click()"></div>
+                    <input type="color" id="colorPicker" value="#6366f1">
+                    <div class="input-wrapper">
+                        <div class="input-label">Hex Code</div>
+                        <input type="text" class="color-input-field" id="hexInput" value="#6366f1" maxlength="7">
+                    </div>
+                </div>
+
+                <div class="scheme-tabs" id="schemeTabs">
+                    <button class="scheme-tab active" data-scheme="monochromatic">Monochromatic</button>
+                    <button class="scheme-tab" data-scheme="analogous">Analogous</button>
+                    <button class="scheme-tab" data-scheme="complementary">Complementary</button>
+                    <button class="scheme-tab" data-scheme="triadic">Triadic</button>
+                    <button class="scheme-tab" data-scheme="tetradic">Tetradic</button>
+                </div>
+
+                <div class="palette-grid" id="paletteGrid"></div>
+            </div>
+
+            <!-- Accessibility Check -->
+            <div class="section">
+                <div class="section-title">Accessibility Check</div>
+                <div class="contrast-grid" id="contrastGrid"></div>
+            </div>
+
+            <!-- Colorblind Simulation -->
+            <div class="section">
+                <div class="section-title">Colorblind Simulation</div>
+                <div class="sim-gallery" id="simGallery"></div>
+            </div>
+
+            <!-- Export Code -->
+            <div class="export-wrapper">
+                <div class="code-block" id="codeBlock"></div>
+                <div class="export-actions">
+                    <button class="btn btn-primary" onclick="copyCode()">Copy Code</button>
+                </div>
+            </div>
+
+            <!-- Color Role Explanation -->
+            <div class="section" style="padding-top: 40px; border-top: 1px solid #e8e8ea; margin-top: 40px;">
+                <div class="section-title" style="font-size: 20px; margin-bottom: 20px;">Understanding Color Roles</div>
+                <div style="color: #86868b; font-size: 15px; line-height: 1.8; max-width: 800px;">
+                    <p style="margin-bottom: 16px;"><strong style="color: #1d1d1f;">Monochromatic palettes</strong> use variations of a single hue, creating a harmonious scale from lightest to darkest. The roles are:</p>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 8px;">• <strong style="color: #1d1d1f;">Lightest</strong> — Background colors, page base</li>
+                        <li style="margin-bottom: 8px;">• <strong style="color: #1d1d1f;">Light</strong> — Card surfaces, elevated elements</li>
+                        <li style="margin-bottom: 8px;">• <strong style="color: #1d1d1f;">Base</strong> — Your primary brand color, tested for accessibility</li>
+                        <li style="margin-bottom: 8px;">• <strong style="color: #1d1d1f;">Dark</strong> — Text on light backgrounds</li>
+                        <li style="margin-bottom: 8px;">• <strong style="color: #1d1d1f;">Darkest</strong> — Headings, high emphasis text</li>
+                    </ul>
+                    <p style="margin-top: 16px;"><strong style="color: #1d1d1f;">Other schemes</strong> (Analogous, Complementary, etc.) use different hues to create contrast and visual interest. The role labels help you understand how to use each color in your design system.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
